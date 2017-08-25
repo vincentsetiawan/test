@@ -1,6 +1,7 @@
 <?php
 
 /*
+routes.php
 |--------------------------------------------------------------------------
 | Application Routes
 |--------------------------------------------------------------------------
@@ -12,9 +13,14 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    //return view('welcome');
+	return "Hi Guys";
 });
 
 Route::get('/contoh',function(){
 	return view('welcome');
+});
+
+Route::get('/admin/post',function(){
+	return "Admin is here";
 });
