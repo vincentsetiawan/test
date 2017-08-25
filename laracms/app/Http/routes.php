@@ -13,14 +13,17 @@ routes.php
 */
 
 Route::get('/', function () {
-    //return view('welcome');
-	return "Hi Guys";
+    return view('welcome');
 });
 
-Route::get('/contoh',function(){
-	return view('welcome');
+Route::get('/about',function(){
+	return "Hi about page";
 });
 
-Route::get('/admin/post',function(){
-	return "Admin is here";
+Route::get('/contact',function(){
+	return "Hi, I am contact";
+});
+
+Route::get('/post/{id}/{name}',function($id, $name){
+	return "This is post number ".$id." ".$name;
 });
