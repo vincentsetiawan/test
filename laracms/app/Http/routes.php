@@ -36,3 +36,5 @@ routes.php
 //Route::get('/post/{id}', 'PostController@index');
 
 Route::resource('post', 'PostController');
+
+Route::get('/contact','PostController@contact');
