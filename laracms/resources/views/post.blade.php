@@ -7,7 +7,7 @@
 	</head>
 	<body>
 		<div class="container">
-			<h1>Contact Page</h1>
+			<h1>Post {{$id}}</h1>
 		</div>
 	</body>
 </html>
