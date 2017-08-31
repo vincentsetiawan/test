@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddIsAdminColumnToPostTables extends Migration
+class CreatePostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,9 +12,11 @@ class AddIsAdminColumnToPostTables extends Migration
      */
     public function up()
     {
-        Schema::table('post', function (Blueprint $table) {
-            //
-            $table->tinyInteger('is_admin')->default('0');
+        Schema::create('posts', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('title');
+            $table->text('content');
+            $table->timestamps();
         });
     }
 
@@ -25,9 +27,6 @@ class AddIsAdminColumnToPostTables extends Migration
      */
     public function down()
     {
-        Schema::table('post', function (Blueprint $table) {
-            //
-            $table->dropColumn('is_admin');
-        });
+        Schema::drop('posts');
     }
 }
