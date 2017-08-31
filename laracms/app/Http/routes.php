@@ -12,9 +12,9 @@ routes.php
 |
 */
 
-//Route::get('/', function () {
-  //  return view('welcome');
-//});
+Route::get('/', function () {
+    return view('welcome');
+});
 
 //Route::get('/about',function(){
 	//return "Hi about page";
@@ -40,3 +40,9 @@ Route::resource('post', 'PostController');
 Route::get('/contact','PostController@contact');
 
 Route::get('/post/{id}/{name}/{password}','PostController@show_post');
+
+Route::get('/insert', function()
+{
+	DB::insert("INSERT INTO post(title, content) values(?, ?)",
+		['PHP WITH LARAVEL', 'Laravel is the best thing that happen to PHP']);
+});
