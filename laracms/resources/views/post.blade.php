@@ -1,4 +1,3 @@
-<--
 <!DOCTYPE html>
 <html>
 	<head>
@@ -12,9 +11,8 @@
 		</div>
 	</body>
 </html>
--->
 
-@extends('layouts.app')
+@extends('layout.app')
 
 @section('content')
 
