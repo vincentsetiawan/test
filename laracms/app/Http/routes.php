@@ -46,3 +46,13 @@ Route::get('/insert', function()
 	DB::insert("INSERT INTO post(title, content) values(?, ?)",
 		['PHP WITH LARAVEL', 'Laravel is the best thing that happen to PHP']);
 });
+
+Route::get('/read', function()
+{
+	$results = DB::select("SELECT * FROM post WHERE id = ?", [1]);
+	//foreach ($results as $post)
+	//{
+	//	return $post->title;
+	//}
+	return $results;
+});
