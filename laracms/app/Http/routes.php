@@ -1,6 +1,6 @@
 <?php
 
-use App\post;
+use App\Post;
 
 /*
 routes.php
