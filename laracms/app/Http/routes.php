@@ -120,3 +120,7 @@ Route::get('/delete', function(){
 	$post = Post::find(2);
 	$post->delete();
 });
+
+Route::get('/delete2', function(){
+	Post::destroy(3);
+});
