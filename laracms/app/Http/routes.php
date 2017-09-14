@@ -115,3 +115,8 @@ Route::get('/basicupdate', function(){
 Route::get('/update', function(){
 	Post::where('id', 2)->where('is_admin', 0)->update(['title' => 'New PHP Title', 'content' => 'I love learning laravel']);
 });
+
+Route::get('/delete', function(){
+	$post = Post::find(2);
+	$post->delete();
+});
