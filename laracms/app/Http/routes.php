@@ -122,5 +122,9 @@ Route::get('/delete', function(){
 });
 
 Route::get('/delete2', function(){
-	Post::destroy(3);
+	Post::destroy([1,4]);
+});
+
+Route::get('/delete3', function(){
+	Post::where('is_admin', 0)->delete();
 });
