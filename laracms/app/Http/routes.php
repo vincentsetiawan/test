@@ -91,3 +91,10 @@ Route::get('/findwhere', function(){
 	//take(x), x digunakan untuk menampilkan berapa banyak data
 	return $posts;
 });
+
+Route::get('/basicinsert', function(){
+	$post = new Post;
+	$post->title = 'New Eloquent Title';
+	$post->content = 'Wow Eloquent Is Really Cool';
+	$post->save();
+});
