@@ -85,3 +85,9 @@ Route::get('/find', function()
 	$post = Post::find(1);
 	return $post->title;
 });
+
+Route::get('/findwhere', function(){
+	$posts = Post::where('is_admin', 0)->orderBy('id', 'desc')->take(2)->get();
+	//take(x), x digunakan untuk menampilkan berapa banyak data
+	return $posts;
+});
