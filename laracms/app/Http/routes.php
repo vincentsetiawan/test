@@ -2,6 +2,7 @@
 
 use App\Post;
 use App\User;
+use App\Country;
 
 /*
 routes.php
@@ -185,10 +186,20 @@ Route::get('/user/{id}/role', function($id){
 });
 
 //Accessing the intermediate Table/Pivot
+//MASIH ERROR, BELUM KELUAR HASILNYA
 Route::get('/user/{id}/pivot', function($id){
 	$user = User::find($id);
 
 	foreach ($user->roles as $role){
 		echo $role->pivot->created_at;
+	}
+});
+
+//Has many through relation
+Route::get('/user/country', function(){
+	$country = Country::find(1);
+
+	foreach ($country->posts as $post) {
+		return $post->title;
 	}
 });
