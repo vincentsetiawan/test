@@ -3,6 +3,7 @@
 use App\Post;
 use App\User;
 use App\Country;
+use App\Photo;
 
 /*
 routes.php
@@ -219,4 +220,9 @@ Route::get('/user/photos', function(){
 	foreach ($user->photos as $photo) {
 		return $photo->path;
 	}
+});
+
+Route::get('photo/{id}/post', function($id){
+	$photo = Photo::findOrFail($id);
+	return $photo->imageable;
 });
