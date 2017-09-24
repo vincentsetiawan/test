@@ -226,3 +226,11 @@ Route::get('photo/{id}/post', function($id){
 	$photo = Photo::findOrFail($id);
 	return $photo->imageable;
 });
+
+//Polymorphic many to many
+Route::get('/post/tag', function(){
+	$post = Post::find(1);
+	foreach ($post->tags as $tag) {
+		echo $tag->name;
+	}
+});
