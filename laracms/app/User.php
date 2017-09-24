@@ -32,4 +32,7 @@ class User extends Authenticatable
         //Secara default FOREIGNKEY adalah MODELNAME_id
         //Dalam kasus ini user_id
     }
+    public function posts(){
+        return $this->hasMany('App\Post');
+    }
 }
