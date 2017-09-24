@@ -167,7 +167,7 @@ Route::get('/post/{id}/user', function($id){
 
 //One to many relationship
 Route::get('/posts', function(){
-	$user = User::find(1);
+	$user = User::find(2);
 
 	foreach ($user->posts as $post){
 		echo $post->title;
