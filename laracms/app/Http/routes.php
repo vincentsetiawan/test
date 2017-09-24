@@ -1,6 +1,7 @@
 <?php
 
 use App\Post;
+use App\User;
 
 /*
 routes.php
@@ -153,4 +154,9 @@ Route::get('/restore', function(){
 
 Route::get('/forcedelete', function(){
 	Post::onlyTrashed()->where('is_admin', 0)->forceDelete();
+});
+
+//One to one relationship
+Route::get('user/{id}/post', function($id){
+	return User::find($id)->post->title;
 });
