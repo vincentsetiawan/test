@@ -23,3 +23,11 @@ Route::get('/create', function(){
 	$post = new Post(['title'=>'My First Post', 'body'=>'I Love Laravel']);
 	$user->posts()->save($post);
 });
+
+Route::get('/read', function(){
+	$user = User::findOrFail(1);
+
+	foreach ($user->posts as $post) {
+		echo $post->title . "<br />";
+	}
+});
