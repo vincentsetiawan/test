@@ -30,3 +30,11 @@ Route::get('/read', function(){
 		return $photo->path;
 	}
 });
+
+Route::get('/update', function(){
+		$staff = Staff::findOrFail(1);
+
+	$photo = $staff->photos()->whereId(1)->first();
+	$photo->path = "Updated.jpg";
+	$photo->save();
+});
