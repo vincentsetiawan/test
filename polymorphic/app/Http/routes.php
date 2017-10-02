@@ -1,4 +1,6 @@
 <?php
+use App\Staff;
+use App\Photo;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,4 +15,10 @@
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/create', function(){
+	$staff = Staff::find(1);
+
+	$staff->photos()->create(['path'=>'example.jpg']);
 });

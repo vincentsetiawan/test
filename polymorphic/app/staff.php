@@ -9,7 +9,7 @@ class staff extends Model
     //
 	protected $fillable = ['name'];
 
-	public funtction photos(){
+	public function photos(){
 		return $this->morphMany('App\Photo', 'imageable');
 	}
 }
