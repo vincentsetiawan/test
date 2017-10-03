@@ -30,3 +30,30 @@ Route::get('/create', function(){
 	$tag2 = Tag::find(2);
 	$video->tags()->save($tag2);	
 });
+
+Route::get('/read', function(){
+	$post = Post::findOrFail(1);
+
+	foreach ($post->tags as $tag) {
+		echo $tag;
+		echo "<br />";
+		echo $tag->name;
+	}
+});
+
+Route::get('/update', function(){
+	//$post = Post::findOrFail(1);
+
+	//foreach ($post->tags as $tag) {
+	//	return $tag->whereName('PHP')->update(['name' => 'Updated PHP']);
+	//}
+
+	$post = Post::findOrFail(1);
+	$tag = Tag::find(3);
+	
+	//$post->tags()->save($tag);
+	
+	//$post->tags()->attach($tag);
+
+	$post->tags()->sync([2]);
+});
