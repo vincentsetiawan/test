@@ -1,4 +1,7 @@
 <?php
+use App\Post;
+use App\Tag;
+use App\Video;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,4 +16,17 @@
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/create', function(){
+	//Buat sebuah post
+	$post = Post::create(['name' => 'My first post']);
+	//Dapatkan tag degan id 1
+	$tag1 = Tag::find(1);
+	//Hubungkan post yg dibuat dengan tag tersebut
+	$post->tags()->save($tag1);
+
+	$video = Video::create(['name' => 'My first video']);
+	$tag2 = Tag::find(2);
+	$video->tags()->save($tag2);	
 });
