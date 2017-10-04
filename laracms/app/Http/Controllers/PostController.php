@@ -61,7 +61,8 @@ class PostController extends Controller
     public function show($id)
     {
         //
-		return "This is show method. Mantap Jiwa ".$id;
+        $post = Post::findOrFail($id);
+		return view('posts.show', compact('post'));
     }
 
     /**
@@ -73,6 +74,8 @@ class PostController extends Controller
     public function edit($id)
     {
         //
+        $post = Post::findOrFail($id);
+        return view('/posts/edit', compact('post'));
     }
 
     /**
