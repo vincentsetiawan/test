@@ -11,11 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-	if(Auth::check()){
-		return "The user is logged in";
-	}
+Route::get('/', function (){ 
     //return view('welcome');
+    $user = Auth::user();
+    if($user->IsAdmin()){
+    	echo "this user is an administrator";
+    }
 });
 
 Route::auth();
@@ -27,3 +28,5 @@ Route::get('/admin/user/roles', ['middleware' => 'role', function(){
 	return "Middleware role";
 	
 }]);
+
+Route::get('/admin', 'AdminController@index');
