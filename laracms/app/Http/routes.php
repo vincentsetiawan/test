@@ -277,3 +277,9 @@ Route::get('/getname', function(){
 
 	return $user->name;
 });
+
+Route::get('/setname', function(){
+	$user = User::find(1);
+	$user->name = "Bambang";
+	$user->save();
+});

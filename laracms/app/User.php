@@ -54,4 +54,12 @@ class User extends Authenticatable
 
         return strtoupper($value);
     }
+
+    public function setNameAttribute($value){
+        //Format nama function --> set + NAMAKOLOM + Attribute
+        //Kita akan mengakses kolom "nama" dari tabel users
+        //Sehingga NAMAKOLOM = nama (Diawali dengan huruf besar)
+
+        $this->attributes['name'] = strtoupper($value);
+    }
 }
