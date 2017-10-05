@@ -41,13 +41,23 @@ class PostController extends Controller
      */
     public function store(CreatePostRequest $request)
     {
-        $file = $request->file('gambar');
+        $input = $request->all();
 
-        echo $file->getClientOriginalName();
-        echo "<br /";
+        if($file = $request->file('gambar')){
+            $name = $file->getClientOriginalName();
+            $file->move('images', $name);
+            $input['path'] = $name;
+        }
 
-        echo $file->getClientSize();
-        echo "<br /";
+        Post::create($input);
+
+        // $file = $request->file('gambar');
+
+        // echo $file->getClientOriginalName();
+        // echo "<br /";
+
+        // echo $file->getClientSize();
+        // echo "<br /";
 
         // // $this->validate($request, [
         // //     'title' => 'required',
