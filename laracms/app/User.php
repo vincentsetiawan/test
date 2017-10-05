@@ -46,4 +46,12 @@ class User extends Authenticatable
     public function photos(){
         return $this->morphMany('App\Photo', 'imageable');
     }
+
+    public function getNameAttribute($value){
+        //Format nama function --> get + NAMAKOLOM + Attribute
+        //Kita akan mengakses kolom "nama" dari tabel users
+        //Sehingga NAMAKOLOM = nama (Diawali dengan huruf besar)
+
+        return strtoupper($value);
+    }
 }

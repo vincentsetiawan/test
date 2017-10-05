@@ -271,3 +271,9 @@ Route::get('/dates', function(){
 	echo "<br />";
 	echo Carbon::now()->yesterday()->diffForHumans();
 });
+
+Route::get('/getname', function(){
+	$user = User::find(1);
+
+	return $user->name;
+});
