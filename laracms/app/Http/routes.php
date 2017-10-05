@@ -6,6 +6,7 @@ use App\Country;
 use App\Photo;
 use App\Tag;
 use App\Video;
+use Carbon\Carbon;
 
 /*
 routes.php
@@ -250,3 +251,23 @@ CRUD Application
 */
 
 Route::resource('/posts', 'PostController');
+
+Route::get('/dates', function(){
+	$date = new DateTime('+1 week');
+	echo $date->format('m-d-y');
+
+	echo "<br />";
+	echo Carbon::now();
+
+	echo "<br />";
+	echo Carbon::now()->diffForHumans();
+
+	echo "<br />";
+	echo Carbon::now()->addDays(10)->diffForHumans();
+
+	echo "<br />";
+	echo Carbon::now()->subMonths(5)->diffForHumans();
+
+	echo "<br />";
+	echo Carbon::now()->yesterday()->diffForHumans();
+});
