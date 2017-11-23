@@ -8,6 +8,7 @@
 	<thead>
 		<tr>
 			<th>ID</th>
+			<th>Photo</th>
 			<th>Name</th>
 			<th>E-Mail</th>
 			<th>Role</th>
@@ -22,9 +23,10 @@
 
 		<tr>
 			<td>{{$user->id}}</td>
+			<td><img height="50" src="{{$user->photo ? $user->photo->file : 'No User Photo'}}"/></td>
 			<td>{{$user->name}}</td>
 			<td>{{$user->email}}</td>
-			<td>{{$user->role->name}}</td>
+			<td>{{$user->role ? $user->role->name : 'No Role'}}</td>
 			<td>{{$user->is_active == 1 ? 'Active' : 'Not Active'}}</td>
 			<td>{{$user->created_at->diffForHumans()}}</td>
 			<td>{{$user->updated_at->diffForHumans()}}</td>

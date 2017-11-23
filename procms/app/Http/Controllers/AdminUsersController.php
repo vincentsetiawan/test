@@ -8,6 +8,7 @@ use App\Http\Requests;
 
 use App\User;
 use App\Role;
+use App\Photo;
 use App\Http\Requests\UsersRequest;
 
 class AdminUsersController extends Controller
@@ -47,11 +48,24 @@ class AdminUsersController extends Controller
         //
         $input = $request->all();
 
-        if($request->file('photo_id')){
-            return "photo exist";
+        //jika user mengupload file, maka ini akan dijalankan
+        if($file = $request->file('photo_id')){
+            //set nama file --> waktu + nama original file
+            $name = time() . $file->getClientOriginalName();
+            //move file to image folder
+            $file->move('images', $name);
+            //buat objek foto dari file yang diupload
+            $photo = Photo::create(['file'=>$name]);
+            //set photo_id
+            $input['photo_id'] = $photo->id;
         }
-        //User::create($request->all());
-        //return redirect('/admin/users');
+
+        //enkrip password sebelum disimpan ke database
+        $input['password'] = bcrypt($request->password);
+        //simpan data ke database
+        User::create($input);
+
+        return redirect('/admin/users');
     }
 
     /**
